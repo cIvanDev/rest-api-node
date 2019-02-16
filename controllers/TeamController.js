@@ -11,5 +11,16 @@ module.exports = {
                reject(err)
             })
       })
+   },
+   getById: id => {
+      return new Promise( (resolve, reject) => {
+         Team.findById(id)
+            .then(data => {
+               resolve(data)
+            })
+            .catch(err => {
+               reject(new Error(`The team: ${id}, was not found`))
+            })
+      })
    }
 }
