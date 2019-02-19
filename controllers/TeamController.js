@@ -46,6 +46,18 @@ module.exports = {
                reject(err)
             })
       })
+   },
+
+   delete: id => {
+      return new Promise((resolve, reject) => {
+         Team.findByIdAndRemove(id)
+            .then(() => {
+               resolve({id})
+            })
+            .catch(err => {
+               reject(err)
+            })
+      })
    }
 
 }
