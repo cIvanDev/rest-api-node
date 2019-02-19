@@ -22,5 +22,18 @@ module.exports = {
                reject(new Error(`The team: ${id}, was not found`))
             })
       })
+   },
+
+   post: params => {
+      return new Promise( (resolve, reject) => {
+         Team.create(params)
+            .then(data => {
+               resolve(data)
+            })
+            .catch(err => {
+               reject(err)
+            })
+      })
    }
+
 }
