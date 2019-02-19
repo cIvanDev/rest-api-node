@@ -24,9 +24,21 @@ module.exports = {
       })
    },
 
-   post: params => {
+   post: (params) => {
       return new Promise( (resolve, reject) => {
          Team.create(params)
+            .then(data => {
+               resolve(data)
+            })
+            .catch(err => {
+               reject(err)
+            })
+      })
+   },
+
+   put: (id, params) => {
+      return new Promise((resolve, reject) => {
+         Team.findByIdAndUpdate(id, params, {new:true})
             .then(data => {
                resolve(data)
             })
